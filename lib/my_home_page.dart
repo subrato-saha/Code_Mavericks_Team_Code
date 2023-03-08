@@ -42,8 +42,9 @@ class MyHomePage extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(top: 10, bottom: 10),
-            height: 310,
+            height: 360,
             child: ListView.separated(
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => ProductCart(products[index]),
                 separatorBuilder: ((context, index) => SizedBox(
