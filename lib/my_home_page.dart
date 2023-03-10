@@ -12,48 +12,95 @@ class MyHomePage extends StatelessWidget {
     List menu = ["All", "Winter", "Woman", "Eyeware", "Man", "Summner"];
     List products = DemoData.alldata();
     return Scaffold(
-      body: SafeArea(
-          child: Column(
-        children: [
-          MyAppBar(),
-          Container(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                child: Text(
-                  "Find your style",
-                  style: TextStyle(fontSize: 30),
+      appBar: MyAppBar(),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: SafeArea(
+            child: Column(
+          children: [
+            Column(
+              children: [
+                Container(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          child: Text(
+                            "Find your style",
+                            style: TextStyle(fontSize: 40),
+                          ),
+                        ),
+                        Container(
+                          height: 70,
+                          width: double.infinity,
+                          child: ListView.separated(
+                              physics: BouncingScrollPhysics(),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 20),
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: ((context, index) => Menu(
+                                    menu_Name: menu[index],
+                                  )),
+                              separatorBuilder: ((context, index) =>
+                                  SizedBox(width: 10)),
+                              itemCount: menu.length),
+                        )
+                      ]),
                 ),
-              ),
-              Container(
-                height: 70,
-                width: double.infinity,
-                child: ListView.separated(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: ((context, index) => Menu(
-                          menu_Name: menu[index],
-                        )),
-                    separatorBuilder: ((context, index) => SizedBox(width: 10)),
-                    itemCount: menu.length),
-              )
-            ]),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10, bottom: 10),
-            height: 360,
-            child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => ProductCart(products[index]),
-                separatorBuilder: ((context, index) => SizedBox(
-                      width: 10,
-                    )),
-                itemCount: products.length),
-          )
-        ],
-      )),
+                Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 10),
+                  height: 380,
+                  child: ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) =>
+                          ProductCart(products[index]),
+                      separatorBuilder: ((context, index) => SizedBox(
+                            width: 10,
+                          )),
+                      itemCount: products.length),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                  child: Column(children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Most Popular",
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Text(
+                          "See all",
+                          style: TextStyle(fontSize: 20, color: Colors.amber),
+                        )
+                      ],
+                    ),
+                    Container(
+                        padding: EdgeInsets.only(top: 20),
+                        child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: BouncingScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                  maxCrossAxisExtent: 250,
+                                  mainAxisExtent: 360,
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10),
+                          itemCount: products.length,
+                          itemBuilder: ((context, index) =>
+                              ProductCart(products[index])),
+                        ))
+                  ]),
+                )
+              ],
+            )
+          ],
+        )),
+      ),
     );
   }
 }
