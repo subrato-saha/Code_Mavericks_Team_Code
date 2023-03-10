@@ -23,7 +23,7 @@ class _ProductCartState extends State<ProductCart> {
                 Container(
                   width: 200,
                   decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(20),
                       image: DecorationImage(
                         image: NetworkImage(widget._demoData.imageUrl),

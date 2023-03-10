@@ -4,9 +4,15 @@ import 'package:code_mavericks_team_code/menu.dart';
 import 'package:code_mavericks_team_code/product_cart.dart';
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int selectedIndex = 2;
   @override
   Widget build(BuildContext context) {
     List menu = ["All", "Winter", "Woman", "Eyeware", "Man", "Summner"];
@@ -40,8 +46,16 @@ class MyHomePage extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 20),
                               scrollDirection: Axis.horizontal,
-                              itemBuilder: ((context, index) => Menu(
-                                    menu_Name: menu[index],
+                              itemBuilder: ((context, index) => GestureDetector(
+                                    onTap: () {
+                                      selectedIndex = index;
+                                      setState(() {});
+                                    },
+                                    child: Menu(
+                                      menu_Name: menu[index],
+                                      selectedIndex: selectedIndex,
+                                      index: index,
+                                    ),
                                   )),
                               separatorBuilder: ((context, index) =>
                                   SizedBox(width: 10)),
