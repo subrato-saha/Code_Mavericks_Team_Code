@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                         ),
                         Container(
-                          height: 70,
+                          height: 60,
                           width: double.infinity,
                           child: ListView.separated(
                               physics: BouncingScrollPhysics(),

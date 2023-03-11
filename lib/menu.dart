@@ -17,17 +17,17 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: Colors.grey.shade400),
           color: widget.selectedIndex == widget.index ? Colors.black : null,
           borderRadius: BorderRadius.circular(10)),
       child: Center(
           child: Text(
         widget.menu_Name,
         style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontFamily: "Varela",
+            fontSize: 15,
             color: widget.selectedIndex == widget.index
                 ? Colors.white
                 : Colors.black),
