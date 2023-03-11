@@ -1,4 +1,5 @@
 import 'package:code_mavericks_team_code/my_home_page.dart';
+import 'package:code_mavericks_team_code/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "DEMO",
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const WelcomePage(),
     );
   }
 }
