@@ -2,6 +2,7 @@ import 'package:code_mavericks_team_code/app_bar.dart';
 import 'package:code_mavericks_team_code/demo_data.dart';
 import 'package:code_mavericks_team_code/menu.dart';
 import 'package:code_mavericks_team_code/product_cart.dart';
+import 'package:code_mavericks_team_code/products_details.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -70,8 +71,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       physics: BouncingScrollPhysics(),
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) =>
-                          ProductCart(products[index]),
+                      itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ProductsDetails(
+                                      products[index],
+                                    )));
+                          },
+                          child: ProductCart(products[index])),
                       separatorBuilder: ((context, index) => SizedBox(
                             width: 10,
                           )),
@@ -105,8 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   crossAxisSpacing: 10,
                                   mainAxisSpacing: 10),
                           itemCount: products.length,
-                          itemBuilder: ((context, index) =>
-                              ProductCart(products[index])),
+                          itemBuilder: ((context, index) => GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => ProductsDetails(
+                                          products[index],
+                                        )));
+                              },
+                              child: ProductCart(products[index]))),
                         ))
                   ]),
                 )

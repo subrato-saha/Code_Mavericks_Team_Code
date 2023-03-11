@@ -35,6 +35,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  gui_shape: ^1.0.4
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -78,10 +80,10 @@ flutter:
       fonts:
         - asset: assets/fonts/florian-regular.otf
         - asset: assets/fonts/florian-bold.otf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+    #         style: italic
+    - family: Varela
+      fonts:
+        - asset: assets/fonts/VarelaRound-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
