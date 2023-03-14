@@ -19,7 +19,7 @@ class WelcomePage extends StatelessWidget {
                 width: double.infinity,
                 child: Stack(children: [
                   Positioned(
-                    left: 90,
+                    left: 88,
                     top: 150,
                     child: Transform.rotate(
                       angle: -math.pi / 11,
@@ -64,11 +64,31 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      bottom: 20,
+                      bottom: 15,
                       right: 50,
-                      child: Text("Classy\nFashion",
-                          style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.bold))),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text("Classy",
+                                  style: TextStyle(
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.bold)),
+                              Text("Fashion",
+                                  style: TextStyle(
+                                      fontSize: 50,
+                                      fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                          star_shape(
+                            isFilled: false,
+                            rightval: 0,
+                            topval: 0,
+                          ),
+                        ],
+                      )),
                   Positioned(
                     bottom: 0,
                     left: MediaQuery.of(context).size.width * 0.4,
@@ -107,7 +127,7 @@ class WelcomePage extends StatelessWidget {
                   star_shape(
                     isFilled: true,
                     rightval: 100,
-                    topval: 60,
+                    topval: 50,
                   ),
                 ]),
               )),
