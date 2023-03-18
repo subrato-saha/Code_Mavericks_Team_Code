@@ -9,6 +9,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -19,8 +20,8 @@ class WelcomePage extends StatelessWidget {
                 width: double.infinity,
                 child: Stack(children: [
                   Positioned(
-                    left: 88,
-                    top: 150,
+                    left: size.width * 0.21,
+                    top: size.width * 0.35,
                     child: Transform.rotate(
                       angle: -math.pi / 11,
                       child: DottedBorder(
@@ -38,7 +39,8 @@ class WelcomePage extends StatelessWidget {
                   Transform.rotate(
                     angle: -math.pi / 11,
                     child: Container(
-                      margin: EdgeInsets.only(top: 45, left: 70),
+                      margin: EdgeInsets.only(
+                          top: size.width * 0.1, left: size.width * 0.17),
                       child: Column(children: [
                         Text(
                           "Fastacy",
@@ -64,8 +66,8 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      bottom: 15,
-                      right: 50,
+                      bottom: size.width * 0.04,
+                      right: size.width * 0.12,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -82,13 +84,13 @@ class WelcomePage extends StatelessWidget {
                                       fontWeight: FontWeight.bold)),
                             ],
                           ),
-                          star_shape(
-                            isFilled: false,
-                            rightval: 0,
-                            topval: 0,
-                          ),
                         ],
                       )),
+                  star_shape2(
+                    isFilled: false,
+                    rightval: size.width * 0.04,
+                    bottomval: size.width * 0.07,
+                  ),
                   Positioned(
                     bottom: 0,
                     left: MediaQuery.of(context).size.width * 0.4,
@@ -230,6 +232,50 @@ class star_shape extends StatelessWidget {
     return Positioned(
       right: topval,
       top: rightval,
+      child: Container(
+        height: 30,
+        width: 30,
+        child: GuiClipShape(
+          shape: GuiShapeStar(
+            sides: 4,
+            cornerRadius: 0,
+            startAngle: GeoAngle(degree: 0),
+            clockwise: true,
+            boxFit: BoxFit.cover,
+            indentSideFactor: 0.3,
+          ),
+          shadows: [
+            //GuiShadow(  color: Colors.red, elevation: 0.0 ,),
+            GuiShadow(
+                color: Colors.deepOrangeAccent,
+                elevation: isFilled == false ? 1.40 : 0)
+          ],
+          child: Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: isFilled == true ? Colors.black : null,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class star_shape2 extends StatelessWidget {
+  star_shape2({Key? key, this.isFilled, this.rightval, this.bottomval})
+      : super(key: key);
+
+  bool? isFilled;
+  double? bottomval;
+  double? rightval;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      right: rightval,
+      bottom: bottomval,
       child: Container(
         height: 30,
         width: 30,
